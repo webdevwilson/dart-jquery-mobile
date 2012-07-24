@@ -10,24 +10,24 @@ class JQM {
   final JQMEvents on = const JQMEvents();
   const JQM();
   
-  void changePage(String to, [Map options]) {
-    _invokeJQM('changePage', [to, options]);
+  changePage(String to, [Map options]) {
+    return _invokeJQM('changePage', [to, options]);
   }
   
-  void loadPage(String url, [Map options]) {
-    _invokeJQM('loadPage', [url, options]);
+  loadPage(String url, [Map options]) {
+    return _invokeJQM('loadPage', [url, options]);
   }
   
-  void showPageLoadingMsg([String theme = 'a', String msgText = 'loading', bool textonly = false]) {
-    _invokeJQM('showPageLoadingMsg', [theme, msgText, textonly]);
+  showPageLoadingMsg([String theme = 'a', String msgText = 'loading', bool textonly = false]) {
+    return _invokeJQM('showPageLoadingMsg', [theme, msgText, textonly]);
   }
   
-  void hidePageLoadingMsg() {
-    _invokeJQM('hidePageLoadingMsg');
+  hidePageLoadingMsg() {
+    return _invokeJQM('hidePageLoadingMsg');
   }
   
-  void _invokeJQM(name, [args]) {
-    invoke('jqm_dart_invokeJQM', [name, args]);
+  _invokeJQM(name, [args]) {
+    return invoke('jqm_dart_invokeJQM', [name, args]);
   }
   
 }
