@@ -13,8 +13,9 @@
     	<div data-role="header"><h1>Dart JQM Test Suite</h1></div>
     	<div data-role="content">
     		<ul data-role="listview" data-theme="b">
-    			<li><a id="changePageLink">Change the page with dart</a></li>
-    			<li><a id="loadPageLink">Load a page with dart</a></li>
+    			<li><a id="changePageLink">Change the page</a></li>
+    			<li><a id="loadPageLink">Load a page</a></li>
+    			<li><a href="#pageLoading">Show page loading msg</a></li>
     		</ul>
     	</div>
     </div>
@@ -24,6 +25,42 @@
     		<p>Dart can change the page!  You should have seen a slideup transition.</p>
     		<code>
     		jqm.changePage('#pageId')
+    		</code>
+    	</div>
+    </div>
+    <div data-role="page" id="pageLoading">
+    	<div data-role="header"><a data-rel="back" data-icon="back">Back</a><h1>Show Page Loading Test</h1></div>
+    	<div data-role="content">
+    		<form>
+	    		<div data-role="fieldcontain" class="ui-hide-label">
+	    			<label for="loadingTheme" data-mini="true">Theme:</label>
+    				<select id="loadingTheme" data-mini="true">
+	    				<option value="a">Select a theme</option>
+	    				<option>a</option>
+	    				<option>b</option>
+	    				<option>c</option>
+	    				<option>d</option>
+	    				<option>e</option>
+	    				<option>f</option>
+	    			</select>
+    			</div>
+    			<div data-role="fieldcontain" class="ui-hide-label">
+    				<label for="loadingText">Message:</label>
+    				<input type="text" id="loadingText" placeholder="loading" data-mini="true" />
+    			</div>
+    			<div class="fieldcontain" class="ui-hide-label">
+					<label for="loadingTextOnly">Text Only:</label>
+					<select id="loadingTextOnly" data-role="slider" data-mini="true">
+						<option value="false">false</option>
+						<option value="true">true</option>
+					</select>
+				</div>
+    			<input type="button" id="showLoadingButton" value="Show" />
+    			<input type="button" id="hideLoadingButton" value="Hide" />
+    		</form>
+    		<code>
+	    		jqm.showPageLoadingMsg('a', 'message', true);
+	    		jqm.hidePageLoadingMsg();
     		</code>
     	</div>
     </div>

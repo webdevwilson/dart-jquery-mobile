@@ -11,11 +11,23 @@ class JQM {
   const JQM();
   
   void changePage(String to, [Map options]) {
-    invoke('jqm_dart_invokeJQM', ['changePage', [to, options]]);
+    _invokeJQM('changePage', [to, options]);
   }
   
   void loadPage(String url, [Map options]) {
-    invoke('jqm_dart_invokeJQM', ['loadPage', [url, options]]);
+    _invokeJQM('loadPage', [url, options]);
+  }
+  
+  void showPageLoadingMsg([String theme = 'a', String msgText = 'loading', bool textonly = false]) {
+    _invokeJQM('showPageLoadingMsg', [theme, msgText, textonly]);
+  }
+  
+  void hidePageLoadingMsg() {
+    _invokeJQM('hidePageLoadingMsg');
+  }
+  
+  void _invokeJQM(name, [args]) {
+    invoke('jqm_dart_invokeJQM', [name, args]);
   }
   
 }
