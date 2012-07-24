@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>dart-jquery-mobile tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+  </head>
+  <body>
+    <div data-role="page" id="start">
+    	<div data-role="header"><h1>Dart JQM Test Suite</h1></div>
+    	<div data-role="content">
+    		<ul data-role="listview" data-theme="b">
+    			<li><a id="changePageLink">Change the page with dart</a></li>
+    			<li><a id="loadPageLink">Load a page with dart</a></li>
+    		</ul>
+    	</div>
+    </div>
+    <div data-role="page" id="changePage">
+    	<div data-role="header"><a data-rel="back" data-icon="back">Back</a><h1>Page Change Test</h1></div>
+    	<div data-role="content">
+    		<p>Dart can change the page!  You should have seen a slideup transition.</p>
+    		<code>
+    		jqm.changePage('#pageId')
+    		</code>
+    	</div>
+    </div>
+    <script type="application/dart" src="test.dart"></script>
+    <script src="http://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js"></script>
+  </body>
+</html>
