@@ -1,0 +1,4 @@
+
+interface HasElement {
+  Element getElement();
+}
