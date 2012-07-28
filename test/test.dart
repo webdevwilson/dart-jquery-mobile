@@ -1,6 +1,5 @@
-#import('../src/jqm.dart');
+#import('../src/mobile.dart');
 #import('dart:html');
-#import('unittest/unittest.dart');
 
 void main() {
   

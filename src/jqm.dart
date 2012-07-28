@@ -1,16 +1,27 @@
-#library('dart:jqm');
-#import('dart:html');
-#import('dart:json');
-#source('js.dart');
-#source('ui.dart');
-
-final String JQM_EVENT_PREFIX = "jqm-dart-";
-final JQM jqm = const JQM();
+/**
+ * JQuery Mobile implementations
+ */
+final String _JQM_EVENT_PREFIX = "jqm-dart-";
+JQM _jqm;
+JQM get jqm() {
+  if(_jqm === null) {
+    _jqm = const JQM();
+  }
+  return _jqm;
+}
 
 class JQM {
   
   final JQMEvents on = const JQMEvents();
+  
+  final List<PageMapper> pageMappers = const [];
+  
   const JQM();
+  
+  init() {
+    pages.navigator = const JQMPageNavigator();
+    pages.pageMappers.add(const JQMPageMapper());
+  }
   
   changePage(String to, [Map options]) {
     return _invokeJQM('changePage', [to, options]);
@@ -35,11 +46,8 @@ class JQM {
 }
 
 class JQMEvents {
-  
   const JQMEvents();
-  
   JQMEventList get beforePageCreate() => const JQMEventList('pagebeforecreate');
-  
 }
 
 class JQMEventList implements EventListenerList {
@@ -64,8 +72,39 @@ class JQMEventList implements EventListenerList {
   }
   
   EventListenerList _event() {
-    return window.on["${JQM_EVENT_PREFIX}-${this._name}"];
+    return window.on["${_JQM_EVENT_PREFIX}-${this._name}"];
   }
   
 }
+ 
+class JQMPageNavigator implements PageNavigator {
+  const JQMPageNavigator();
+  void show(final Page page) {
+    var id=page.getElement().attributes['id'];
+    window.console.log("jqm.changePage(#${id})");
+    jqm.changePage("#${id}");
+  }
+}
 
+class JQMPageMapper implements PageMapper {
+  const JQMPageMapper();
+  
+  Page pageForHash(final hash) {
+    return new JQMPage(hash);
+  }
+}
+
+class JQMPage implements Page {
+  
+  final String _elementId;
+  
+  const JQMPage(this._elementId);
+  
+  Element getElement() {
+    return query("#${this._elementId}");
+  }
+  
+  String get hash() {
+    return _elementId;
+  }
+}
